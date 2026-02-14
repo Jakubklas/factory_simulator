@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["HistoryRawData"],"struct":["HistoryServerCapabilities"],"trait":["HistoricalDataProvider","HistoricalEventProvider"]};

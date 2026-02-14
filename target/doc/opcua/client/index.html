@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="The OPC UA Client module contains the functionality necessary for a client to connect to an OPC UA server, authenticate itself, send messages, receive responses, get values, browse the address space and provide callbacks for things to be propagated to the client."><title>opcua::client - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="opcua" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.1 (ed61e7d7e 2025-11-07)" data-channel="1.91.1" data-search-js="search-e256b49e.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../static.files/storage-e2aeef58.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">Module client</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../opcua/index.html">opcua</a><span class="version">0.12.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module client</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li></ul><h3><a href="#modules">Module Items</a></h3><ul class="block"><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="../index.html">In crate opcua</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../index.html">opcua</a></div><h1>Module <span>client</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../src/opcua/client/mod.rs.html#5-161">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>The OPC UA Client module contains the functionality necessary for a client to connect to an OPC UA server,
+authenticate itself, send messages, receive responses, get values, browse the address space and
+provide callbacks for things to be propagated to the client.</p>
+<p>A client has to specify the endpoint description they wish to connect to, security policy and other
+configurable options, e.g. paths to PKI keys. All of this is encapsulated in a <a href="./client/struct.Client.html"><code>Client</code></a> object.</p>
+<p>One of these may be made programatically using a <a href="./client_builder/struct.ClientBuilder.html"><code>ClientBuilder</code></a> or from a preexisting <a href="./config/struct.ClientConfig.html"><code>ClientConfig</code></a>
+which can be loaded fully or partially from disk. Use the way that suits you.</p>
+<p>Once the <code>Client</code> is created it can connect to a server by creating a <a href="./session/struct.Session.html"><code>Session</code></a>. Multiple sessions
+can be created from the same client. Functions on the <a href="./session/struct.Session.html"><code>Session</code></a> correspond to OPC UA services so
+it can be used to:</p>
+<ul>
+<li>Discover endpoints</li>
+<li>Activate a session</li>
+<li>Create / modify / delete subscriptions</li>
+<li>Create / modify / delete monitored items</li>
+<li>Read and write values</li>
+<li>Browse the address space</li>
+<li>Add or remove nodes</li>
+</ul>
+<p>Functionality is synchronous and housekeeping such as renewing the active session and sending publish requests is
+handled automatically.</p>
+<p>Data change and event notifications are via asynchronous callbacks.</p>
+<h2 id="example"><a class="doc-anchor" href="#example">§</a>Example</h2>
+<p>Here is a complete example of a client that connects to the <code>samples/simple-server</code>, subscribes
+to some values and prints out changes to those values. This example corresponds to the one
+described in the in docs/client.md tutorial.</p>
+
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>std::sync::Arc;
+<span class="kw">use </span>opcua::client::prelude::<span class="kw-2">*</span>;
+<span class="kw">use </span>opcua::sync::<span class="kw-2">*</span>;
+
+<span class="kw">fn </span>main() {
+    <span class="kw">let </span><span class="kw-2">mut </span>client = ClientBuilder::new()
+        .application_name(<span class="string">"My First Client"</span>)
+        .application_uri(<span class="string">"urn:MyFirstClient"</span>)
+        .create_sample_keypair(<span class="bool-val">true</span>)
+        .trust_server_certs(<span class="bool-val">false</span>)
+        .session_retry_limit(<span class="number">3</span>)
+        .client().unwrap();
+
+    <span class="comment">// Create an endpoint. The EndpointDescription can be made from a tuple consisting of
+    // the endpoint url, security policy, message security mode and user token policy.
+    </span><span class="kw">let </span>endpoint: EndpointDescription = (<span class="string">"opc.tcp://localhost:4855/"</span>, <span class="string">"None"</span>, MessageSecurityMode::None, UserTokenPolicy::anonymous()).into();
+
+    <span class="comment">// Create the session
+    </span><span class="kw">let </span>session = client.connect_to_endpoint(endpoint, IdentityToken::Anonymous).unwrap();
+
+    <span class="comment">// Create a subscription and monitored items
+    </span><span class="kw">if </span>subscribe_to_values(session.clone()).is_ok() {
+        <span class="kw">let _ </span>= Session::run(session);
+    } <span class="kw">else </span>{
+        <span class="macro">println!</span>(<span class="string">"Error creating subscription"</span>);
+    }
+}
+
+<span class="kw">fn </span>subscribe_to_values(session: Arc&lt;RwLock&lt;Session&gt;&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;(), StatusCode&gt; {
+    <span class="kw">let </span><span class="kw-2">mut </span>session = session.write();
+    <span class="comment">// Create a subscription polling every 2s with a callback
+    </span><span class="kw">let </span>subscription_id = session.create_subscription(<span class="number">2000.0</span>, <span class="number">10</span>, <span class="number">30</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="bool-val">true</span>, DataChangeCallback::new(|changed_monitored_items| {
+        <span class="macro">println!</span>(<span class="string">"Data change from server:"</span>);
+        changed_monitored_items.iter().for_each(|item| print_value(item));
+    }))<span class="question-mark">?</span>;
+    <span class="comment">// Create some monitored items
+    </span><span class="kw">let </span>items_to_create: Vec&lt;MonitoredItemCreateRequest&gt; = [<span class="string">"v1"</span>, <span class="string">"v2"</span>, <span class="string">"v3"</span>, <span class="string">"v4"</span>].iter()
+        .map(|v| NodeId::new(<span class="number">2</span>, <span class="kw-2">*</span>v).into()).collect();
+    <span class="kw">let _ </span>= session.create_monitored_items(subscription_id, TimestampsToReturn::Both, <span class="kw-2">&amp;</span>items_to_create)<span class="question-mark">?</span>;
+    <span class="prelude-val">Ok</span>(())
+}
+
+<span class="kw">fn </span>print_value(item: <span class="kw-2">&amp;</span>MonitoredItem) {
+   <span class="kw">let </span>node_id = <span class="kw-2">&amp;</span>item.item_to_monitor().node_id;
+   <span class="kw">let </span>data_value = item.last_value();
+   <span class="kw">if let </span><span class="prelude-val">Some</span>(<span class="kw-2">ref </span>value) = data_value.value {
+       <span class="macro">println!</span>(<span class="string">"Item \"{}\", Value = {:?}"</span>, node_id, value);
+   } <span class="kw">else </span>{
+       <span class="macro">println!</span>(<span class="string">"Item \"{}\", Value not found, error: {}"</span>, node_id, data_value.status.as_ref().unwrap());
+   }
+}</code></pre></div></div></details><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="prelude/index.html" title="mod opcua::client::prelude">prelude</a></dt></dl></section></div></main></body></html>

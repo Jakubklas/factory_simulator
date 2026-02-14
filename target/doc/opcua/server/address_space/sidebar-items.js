@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["address_space","base","data_type","method","node","object","object_type","reference_type","references","relative_path","types","variable","variable_type","view"],"struct":["AccessLevel","AttrFnGetter","AttrFnSetter","EventNotifier","UserAccessLevel"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["events_for_object","filter_events","purge_events"],"struct":["BaseEventType"],"trait":["Event"]};

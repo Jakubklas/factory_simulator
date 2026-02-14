@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `SubscriptionService` trait in crate `opcua`."><title>SubscriptionService in opcua::client::prelude - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="opcua" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.1 (ed61e7d7e 2025-11-07)" data-channel="1.91.1" data-search-js="search-e256b49e.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">SubscriptionService</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../opcua/index.html">opcua</a><span class="version">0.12.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Subscription<wbr>Service</a></h2><h3><a href="#required-methods">Required Methods</a></h3><ul class="block"><li><a href="#tymethod.create_subscription" title="create_subscription">create_subscription</a></li><li><a href="#tymethod.delete_subscription" title="delete_subscription">delete_subscription</a></li><li><a href="#tymethod.delete_subscriptions" title="delete_subscriptions">delete_subscriptions</a></li><li><a href="#tymethod.modify_subscription" title="modify_subscription">modify_subscription</a></li><li><a href="#tymethod.set_publishing_mode" title="set_publishing_mode">set_publishing_mode</a></li><li><a href="#tymethod.transfer_subscriptions" title="transfer_subscriptions">transfer_subscriptions</a></li></ul><h3><a href="#dyn-compatibility">Dyn Compatibility</a></h3><h3><a href="#implementors">Implementors</a></h3></section><div id="rustdoc-modnav"><h2><a href="index.html">In opcua::<wbr>client::<wbr>prelude</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">opcua</a>::<wbr><a href="../index.html">client</a>::<wbr><a href="index.html">prelude</a></div><h1>Trait <span class="trait">Subscription<wbr>Service</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/opcua/client/session/services.rs.html#744-914">Source</a> </span></div><pre class="rust item-decl"><code>pub trait SubscriptionService: <a class="trait" href="trait.Service.html" title="trait opcua::client::prelude::Service">Service</a> {
+    // Required methods
+    fn <a href="#tymethod.create_subscription" class="fn">create_subscription</a>&lt;CB&gt;(
+        &amp;self,
+        publishing_interval: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.f64.html">f64</a>,
+        lifetime_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        max_keep_alive_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        max_notifications_per_publish: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        priority: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u8.html">u8</a>,
+        publishing_enabled: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+        callback: CB,
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;
+       <span class="where">where CB: <a class="trait" href="trait.OnSubscriptionNotification.html" title="trait opcua::client::prelude::OnSubscriptionNotification">OnSubscriptionNotification</a> + <a class="trait" href="https://doc.rust-lang.org/1.91.1/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/1.91.1/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static</span>;
+<span class="item-spacer"></span>    fn <a href="#tymethod.modify_subscription" class="fn">modify_subscription</a>(
+        &amp;self,
+        subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        publishing_interval: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.f64.html">f64</a>,
+        lifetime_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        max_keep_alive_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        max_notifications_per_publish: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        priority: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u8.html">u8</a>,
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.unit.html">()</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.set_publishing_mode" class="fn">set_publishing_mode</a>(
+        &amp;self,
+        subscription_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+        publishing_enabled: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.transfer_subscriptions" class="fn">transfer_subscriptions</a>(
+        &amp;self,
+        subscription_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+        send_initial_values: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.TransferResult.html" title="struct opcua::types::service_types::TransferResult">TransferResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.delete_subscription" class="fn">delete_subscription</a>(
+        &amp;self,
+        subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.delete_subscriptions" class="fn">delete_subscriptions</a>(
+        &amp;self,
+        subscription_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+}</code></pre><h2 id="required-methods" class="section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.create_subscription" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#788-799">Source</a><h4 class="code-header">fn <a href="#tymethod.create_subscription" class="fn">create_subscription</a>&lt;CB&gt;(
+    &amp;self,
+    publishing_interval: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.f64.html">f64</a>,
+    lifetime_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    max_keep_alive_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    max_notifications_per_publish: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    priority: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u8.html">u8</a>,
+    publishing_enabled: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+    callback: CB,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;<div class="where">where
+    CB: <a class="trait" href="trait.OnSubscriptionNotification.html" title="trait opcua::client::prelude::OnSubscriptionNotification">OnSubscriptionNotification</a> + <a class="trait" href="https://doc.rust-lang.org/1.91.1/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/1.91.1/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static,</div></h4></section></summary><div class="docblock"><p>Create a subscription by sending a <a href="./struct.CreateSubscriptionRequest.html"><code>CreateSubscriptionRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.13.2 for complete description of the service and error responses.</p>
+<h5 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments</h5>
+<ul>
+<li><code>publishing_interval</code> - The requested publishing interval defines the cyclic rate that
+the Subscription is being requested to return Notifications to the Client. This interval
+is expressed in milliseconds. This interval is represented by the publishing timer in the
+Subscription state table. The negotiated value for this parameter returned in the
+response is used as the default sampling interval for MonitoredItems assigned to this
+Subscription. If the requested value is 0 or negative, the server shall revise with the
+fastest supported publishing interval in milliseconds.</li>
+<li><code>lifetime_count</code> - Requested lifetime count. The lifetime count shall be a minimum of
+three times the keep keep-alive count. When the publishing timer has expired this
+number of times without a Publish request being available to send a NotificationMessage,
+then the Subscription shall be deleted by the Server.</li>
+<li><code>max_keep_alive_count</code> - Requested maximum keep-alive count. When the publishing timer has
+expired this number of times without requiring any NotificationMessage to be sent, the
+Subscription sends a keep-alive Message to the Client. The negotiated value for this
+parameter is returned in the response. If the requested value is 0, the server shall
+revise with the smallest supported keep-alive count.</li>
+<li><code>max_notifications_per_publish</code> - The maximum number of notifications that the Client
+wishes to receive in a single Publish response. A value of zero indicates that there is
+no limit. The number of notifications per Publish is the sum of monitoredItems in
+the DataChangeNotification and events in the EventNotificationList.</li>
+<li><code>priority</code> - Indicates the relative priority of the Subscription. When more than one
+Subscription needs to send Notifications, the Server should de-queue a Publish request
+to the Subscription with the highest priority number. For Subscriptions with equal
+priority the Server should de-queue Publish requests in a round-robin fashion.
+A Client that does not require special priority settings should set this value to zero.</li>
+<li><code>publishing_enabled</code> - A boolean parameter with the following values - <code>true</code> publishing
+is enabled for the Subscription, <code>false</code>, publishing is disabled for the Subscription.
+The value of this parameter does not affect the value of the monitoring mode Attribute of
+MonitoredItems.</li>
+</ul>
+<h5 id="returns"><a class="doc-anchor" href="#returns">§</a>Returns</h5>
+<ul>
+<li><code>Ok(u32)</code> - identifier for new subscription</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.modify_subscription" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#818-826">Source</a><h4 class="code-header">fn <a href="#tymethod.modify_subscription" class="fn">modify_subscription</a>(
+    &amp;self,
+    subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    publishing_interval: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.f64.html">f64</a>,
+    lifetime_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    max_keep_alive_count: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    max_notifications_per_publish: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    priority: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u8.html">u8</a>,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.unit.html">()</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Modifies a subscription by sending a <a href="./struct.ModifySubscriptionRequest.html"><code>ModifySubscriptionRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.13.3 for complete description of the service and error responses.</p>
+<h5 id="arguments-1"><a class="doc-anchor" href="#arguments-1">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_id</code> - subscription identifier returned from <code>create_subscription</code>.</li>
+</ul>
+<p>See <code>create_subscription</code> for description of other parameters</p>
+<h5 id="returns-1"><a class="doc-anchor" href="#returns-1">§</a>Returns</h5>
+<ul>
+<li><code>Ok(())</code> - Success</li>
+<li><code>Err(StatusCode)</code> - Request failed, status code is the reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.set_publishing_mode" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#845-849">Source</a><h4 class="code-header">fn <a href="#tymethod.set_publishing_mode" class="fn">set_publishing_mode</a>(
+    &amp;self,
+    subscription_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+    publishing_enabled: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Changes the publishing mode of subscriptions by sending a <a href="./struct.SetPublishingModeRequest.html"><code>SetPublishingModeRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.13.4 for complete description of the service and error responses.</p>
+<h5 id="arguments-2"><a class="doc-anchor" href="#arguments-2">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_ids</code> - one or more subscription identifiers.</li>
+<li><code>publishing_enabled</code> - A boolean parameter with the following values - <code>true</code> publishing
+is enabled for the Subscriptions, <code>false</code>, publishing is disabled for the Subscriptions.</li>
+</ul>
+<h5 id="returns-2"><a class="doc-anchor" href="#returns-2">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;StatusCode&gt;)</code> - Service return code for the  action for each id, <code>Good</code> or <code>BadSubscriptionIdInvalid</code></li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.transfer_subscriptions" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#872-876">Source</a><h4 class="code-header">fn <a href="#tymethod.transfer_subscriptions" class="fn">transfer_subscriptions</a>(
+    &amp;self,
+    subscription_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+    send_initial_values: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.TransferResult.html" title="struct opcua::types::service_types::TransferResult">TransferResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Transfers Subscriptions and their MonitoredItems from one Session to another. For example,
+a Client may need to reopen a Session and then transfer its Subscriptions to that Session.
+It may also be used by one Client to take over a Subscription from another Client by
+transferring the Subscription to its Session.</p>
+<p>See OPC UA Part 4 - Services 5.13.7 for complete description of the service and error responses.</p>
+<ul>
+<li><code>subscription_ids</code> - one or more subscription identifiers.</li>
+<li><code>send_initial_values</code> - A boolean parameter with the following values - <code>true</code> the first
+publish response shall contain the current values of all monitored items in the subscription,
+<code>false</code>, the first publish response shall contain only the value changes since the last
+publish response was sent.</li>
+</ul>
+<h5 id="returns-3"><a class="doc-anchor" href="#returns-3">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;TransferResult&gt;)</code> - The <a href="./struct.TransferResult.html"><code>TransferResult</code></a> for each transfer subscription.</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.delete_subscription" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#893">Source</a><h4 class="code-header">fn <a href="#tymethod.delete_subscription" class="fn">delete_subscription</a>(
+    &amp;self,
+    subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Deletes a subscription by sending a <a href="./struct.DeleteSubscriptionsRequest.html"><code>DeleteSubscriptionsRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.13.8 for complete description of the service and error responses.</p>
+<h5 id="arguments-3"><a class="doc-anchor" href="#arguments-3">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_id</code> - subscription identifier returned from <code>create_subscription</code>.</li>
+</ul>
+<h5 id="returns-4"><a class="doc-anchor" href="#returns-4">§</a>Returns</h5>
+<ul>
+<li><code>Ok(StatusCode)</code> - Service return code for the delete action, <code>Good</code> or <code>BadSubscriptionIdInvalid</code></li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.delete_subscriptions" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#912-913">Source</a><h4 class="code-header">fn <a href="#tymethod.delete_subscriptions" class="fn">delete_subscriptions</a>(
+    &amp;self,
+    subscription_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Deletes subscriptions by sending a <a href="./struct.DeleteSubscriptionsRequest.html"><code>DeleteSubscriptionsRequest</code></a> to the server with the list
+of subscriptions to delete.</p>
+<p>See OPC UA Part 4 - Services 5.13.8 for complete description of the service and error responses.</p>
+<h5 id="arguments-4"><a class="doc-anchor" href="#arguments-4">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_ids</code> - List of subscription identifiers to delete.</li>
+</ul>
+<h5 id="returns-5"><a class="doc-anchor" href="#returns-5">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;StatusCode&gt;)</code> - List of result for delete action on each id, <code>Good</code> or <code>BadSubscriptionIdInvalid</code>
+The size and order of the list matches the size and order of the input.</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure</li>
+</ul>
+</div></details></div><h2 id="dyn-compatibility" class="section-header">Dyn Compatibility<a href="#dyn-compatibility" class="anchor">§</a></h2><div class="dyn-compatibility-info"><p>This trait is <b>not</b> <a href="https://doc.rust-lang.org/1.91.1/reference/items/traits.html#dyn-compatibility">dyn compatible</a>.</p><p><i>In older versions of Rust, dyn compatibility was called "object safety", so this trait is not object safe.</i></p></div><h2 id="implementors" class="section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-SubscriptionService-for-Session" class="impl"><a class="src rightside" href="../../../src/opcua/client/session/session.rs.html#1549-1740">Source</a><a href="#impl-SubscriptionService-for-Session" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.SubscriptionService.html" title="trait opcua::client::prelude::SubscriptionService">SubscriptionService</a> for <a class="struct" href="struct.Session.html" title="struct opcua::client::prelude::Session">Session</a></h3></section></div><script src="../../../trait.impl/opcua/client/session/services/trait.SubscriptionService.js" async></script></section></div></main></body></html>

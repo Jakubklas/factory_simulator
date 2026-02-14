@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"mod":["audit","event","event_filter"]};

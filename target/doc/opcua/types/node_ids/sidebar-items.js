@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["DataTypeId","MethodId","ObjectId","ObjectTypeId","ReferenceTypeId","VariableId","VariableTypeId"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["CHUNK_FINAL","CHUNK_FINAL_ERROR","CHUNK_INTERMEDIATE","CHUNK_MESSAGE","CLOSE_SECURE_CHANNEL_MESSAGE","MESSAGE_HEADER_LEN","MIN_CHUNK_SIZE","OPEN_SECURE_CHANNEL_MESSAGE"],"enum":["MessageType"],"struct":["AcknowledgeMessage","ErrorMessage","HelloMessage","MessageHeader"]};

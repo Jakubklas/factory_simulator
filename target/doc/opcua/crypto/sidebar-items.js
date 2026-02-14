@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["SHA1_SIZE","SHA256_SIZE"],"fn":["create_signature_data","hostname","verify_signature_data"],"mod":["aeskey","certificate_store","hash","pkey","random","security_policy","thumbprint","user_identity","x509"],"struct":["HostnameError"]};

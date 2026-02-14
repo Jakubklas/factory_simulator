@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["find_nodes_relative_path","find_nodes_relative_path_simple"]};

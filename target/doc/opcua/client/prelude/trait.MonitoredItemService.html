@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `MonitoredItemService` trait in crate `opcua`."><title>MonitoredItemService in opcua::client::prelude - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="opcua" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.1 (ed61e7d7e 2025-11-07)" data-channel="1.91.1" data-search-js="search-e256b49e.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">MonitoredItemService</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../opcua/index.html">opcua</a><span class="version">0.12.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Monitored<wbr>Item<wbr>Service</a></h2><h3><a href="#required-methods">Required Methods</a></h3><ul class="block"><li><a href="#tymethod.create_monitored_items" title="create_monitored_items">create_monitored_items</a></li><li><a href="#tymethod.delete_monitored_items" title="delete_monitored_items">delete_monitored_items</a></li><li><a href="#tymethod.modify_monitored_items" title="modify_monitored_items">modify_monitored_items</a></li><li><a href="#tymethod.set_monitoring_mode" title="set_monitoring_mode">set_monitoring_mode</a></li><li><a href="#tymethod.set_triggering" title="set_triggering">set_triggering</a></li></ul><h3><a href="#dyn-compatibility">Dyn Compatibility</a></h3><h3><a href="#implementors">Implementors</a></h3></section><div id="rustdoc-modnav"><h2><a href="index.html">In opcua::<wbr>client::<wbr>prelude</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">opcua</a>::<wbr><a href="../index.html">client</a>::<wbr><a href="index.html">prelude</a></div><h1>Trait <span class="trait">Monitored<wbr>Item<wbr>Service</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/opcua/client/session/services.rs.html#609-739">Source</a> </span></div><pre class="rust item-decl"><code>pub trait MonitoredItemService: <a class="trait" href="trait.Service.html" title="trait opcua::client::prelude::Service">Service</a> {
+    // Required methods
+    fn <a href="#tymethod.create_monitored_items" class="fn">create_monitored_items</a>(
+        &amp;self,
+        subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        timestamps_to_return: <a class="enum" href="../../types/service_types/enum.TimestampsToReturn.html" title="enum opcua::types::service_types::TimestampsToReturn">TimestampsToReturn</a>,
+        items_to_create: &amp;[<a class="struct" href="../../types/service_types/struct.MonitoredItemCreateRequest.html" title="struct opcua::types::service_types::MonitoredItemCreateRequest">MonitoredItemCreateRequest</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.MonitoredItemCreateResult.html" title="struct opcua::types::service_types::MonitoredItemCreateResult">MonitoredItemCreateResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.modify_monitored_items" class="fn">modify_monitored_items</a>(
+        &amp;self,
+        subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        timestamps_to_return: <a class="enum" href="../../types/service_types/enum.TimestampsToReturn.html" title="enum opcua::types::service_types::TimestampsToReturn">TimestampsToReturn</a>,
+        items_to_modify: &amp;[<a class="struct" href="../../types/service_types/struct.MonitoredItemModifyRequest.html" title="struct opcua::types::service_types::MonitoredItemModifyRequest">MonitoredItemModifyRequest</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.MonitoredItemModifyResult.html" title="struct opcua::types::service_types::MonitoredItemModifyResult">MonitoredItemModifyResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.set_monitoring_mode" class="fn">set_monitoring_mode</a>(
+        &amp;self,
+        subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        monitoring_mode: <a class="enum" href="../../types/service_types/enum.MonitoringMode.html" title="enum opcua::types::service_types::MonitoringMode">MonitoringMode</a>,
+        monitored_item_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.set_triggering" class="fn">set_triggering</a>(
+        &amp;self,
+        subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        triggering_item_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        links_to_add: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+        links_to_remove: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;(<a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;&gt;, <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;&gt;), <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.delete_monitored_items" class="fn">delete_monitored_items</a>(
+        &amp;self,
+        subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+        items_to_delete: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+}</code></pre><h2 id="required-methods" class="section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.create_monitored_items" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#630-635">Source</a><h4 class="code-header">fn <a href="#tymethod.create_monitored_items" class="fn">create_monitored_items</a>(
+    &amp;self,
+    subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    timestamps_to_return: <a class="enum" href="../../types/service_types/enum.TimestampsToReturn.html" title="enum opcua::types::service_types::TimestampsToReturn">TimestampsToReturn</a>,
+    items_to_create: &amp;[<a class="struct" href="../../types/service_types/struct.MonitoredItemCreateRequest.html" title="struct opcua::types::service_types::MonitoredItemCreateRequest">MonitoredItemCreateRequest</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.MonitoredItemCreateResult.html" title="struct opcua::types::service_types::MonitoredItemCreateResult">MonitoredItemCreateResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Creates monitored items on a subscription by sending a <a href="./struct.CreateMonitoredItemsRequest.html"><code>CreateMonitoredItemsRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.12.2 for complete description of the service and error responses.</p>
+<h5 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_id</code> - The Server-assigned identifier for the Subscription that will report Notifications for this MonitoredItem</li>
+<li><code>timestamps_to_return</code> - An enumeration that specifies the timestamp Attributes to be transmitted for each MonitoredItem.</li>
+<li><code>items_to_create</code> - A list of <a href="./struct.MonitoredItemCreateRequest.html"><code>MonitoredItemCreateRequest</code></a> to be created and assigned to the specified Subscription.</li>
+</ul>
+<h5 id="returns"><a class="doc-anchor" href="#returns">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;MonitoredItemCreateResult&gt;)</code> - A list of <a href="./struct.MonitoredItemCreateResult.html"><code>MonitoredItemCreateResult</code></a> corresponding to the items to create.
+The size and order of the list matches the size and order of the <code>items_to_create</code> request parameter.</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.modify_monitored_items" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#657-662">Source</a><h4 class="code-header">fn <a href="#tymethod.modify_monitored_items" class="fn">modify_monitored_items</a>(
+    &amp;self,
+    subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    timestamps_to_return: <a class="enum" href="../../types/service_types/enum.TimestampsToReturn.html" title="enum opcua::types::service_types::TimestampsToReturn">TimestampsToReturn</a>,
+    items_to_modify: &amp;[<a class="struct" href="../../types/service_types/struct.MonitoredItemModifyRequest.html" title="struct opcua::types::service_types::MonitoredItemModifyRequest">MonitoredItemModifyRequest</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.MonitoredItemModifyResult.html" title="struct opcua::types::service_types::MonitoredItemModifyResult">MonitoredItemModifyResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Modifies monitored items on a subscription by sending a <a href="./struct.ModifyMonitoredItemsRequest.html"><code>ModifyMonitoredItemsRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.12.3 for complete description of the service and error responses.</p>
+<h5 id="arguments-1"><a class="doc-anchor" href="#arguments-1">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_id</code> - The Server-assigned identifier for the Subscription that will report Notifications for this MonitoredItem.</li>
+<li><code>timestamps_to_return</code> - An enumeration that specifies the timestamp Attributes to be transmitted for each MonitoredItem.</li>
+<li><code>items_to_modify</code> - The list of <a href="./struct.MonitoredItemModifyRequest.html"><code>MonitoredItemModifyRequest</code></a> to modify.</li>
+</ul>
+<h5 id="returns-1"><a class="doc-anchor" href="#returns-1">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;MonitoredItemModifyResult&gt;)</code> - A list of <a href="./struct.MonitoredItemModifyResult.html"><code>MonitoredItemModifyResult</code></a> corresponding to the MonitoredItems to modify.
+The size and order of the list matches the size and order of the <code>items_to_modify</code> request parameter.</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure.</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.set_monitoring_mode" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#682-687">Source</a><h4 class="code-header">fn <a href="#tymethod.set_monitoring_mode" class="fn">set_monitoring_mode</a>(
+    &amp;self,
+    subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    monitoring_mode: <a class="enum" href="../../types/service_types/enum.MonitoringMode.html" title="enum opcua::types::service_types::MonitoringMode">MonitoringMode</a>,
+    monitored_item_ids: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Sets the monitoring mode on one or more monitored items by sending a <a href="./struct.SetMonitoringModeRequest.html"><code>SetMonitoringModeRequest</code></a>
+to the server.</p>
+<p>See OPC UA Part 4 - Services 5.12.4 for complete description of the service and error responses.</p>
+<h5 id="arguments-2"><a class="doc-anchor" href="#arguments-2">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_id</code> - the subscription identifier containing the monitored items to be modified.</li>
+<li><code>monitoring_mode</code> - the monitored mode to apply to the monitored items</li>
+<li><code>monitored_item_ids</code> - the monitored items to be modified</li>
+</ul>
+<h5 id="returns-2"><a class="doc-anchor" href="#returns-2">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;StatusCode&gt;)</code> - Individual result for each monitored item.</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure.</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.set_triggering" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#709-715">Source</a><h4 class="code-header">fn <a href="#tymethod.set_triggering" class="fn">set_triggering</a>(
+    &amp;self,
+    subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    triggering_item_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    links_to_add: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+    links_to_remove: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;(<a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;&gt;, <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;&gt;), <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Sets a monitored item so it becomes the trigger that causes other monitored items to send
+change events in the same update. Sends a <a href="./struct.SetTriggeringRequest.html"><code>SetTriggeringRequest</code></a> to the server.
+Note that <code>items_to_remove</code> is applied before <code>items_to_add</code>.</p>
+<p>See OPC UA Part 4 - Services 5.12.5 for complete description of the service and error responses.</p>
+<h5 id="arguments-3"><a class="doc-anchor" href="#arguments-3">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_id</code> - the subscription identifier containing the monitored item to be used as the trigger.</li>
+<li><code>monitored_item_id</code> - the monitored item that is the trigger.</li>
+<li><code>links_to_add</code> - zero or more items to be added to the monitored item’s triggering list.</li>
+<li><code>items_to_remove</code> - zero or more items to be removed from the monitored item’s triggering list.</li>
+</ul>
+<h5 id="returns-3"><a class="doc-anchor" href="#returns-3">§</a>Returns</h5>
+<ul>
+<li><code>Ok((Option&lt;Vec&lt;StatusCode&gt;&gt;, Option&lt;Vec&lt;StatusCode&gt;&gt;))</code> - Individual result for each item added / removed for the SetTriggering call.</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure.</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.delete_monitored_items" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#734-738">Source</a><h4 class="code-header">fn <a href="#tymethod.delete_monitored_items" class="fn">delete_monitored_items</a>(
+    &amp;self,
+    subscription_id: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>,
+    items_to_delete: &amp;[<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.u32.html">u32</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Deletes monitored items from a subscription by sending a <a href="./struct.DeleteMonitoredItemsRequest.html"><code>DeleteMonitoredItemsRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.12.6 for complete description of the service and error responses.</p>
+<h5 id="arguments-4"><a class="doc-anchor" href="#arguments-4">§</a>Arguments</h5>
+<ul>
+<li><code>subscription_id</code> - The Server-assigned identifier for the Subscription that will report Notifications for this MonitoredItem.</li>
+<li><code>items_to_delete</code> - List of Server-assigned ids for the MonitoredItems to be deleted.</li>
+</ul>
+<h5 id="returns-4"><a class="doc-anchor" href="#returns-4">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;StatusCode&gt;)</code> - List of StatusCodes for the MonitoredItems to delete. The size and
+order of the list matches the size and order of the <code>items_to_delete</code> request parameter.</li>
+<li><code>Err(StatusCode)</code> - Status code reason for failure.</li>
+</ul>
+</div></details></div><h2 id="dyn-compatibility" class="section-header">Dyn Compatibility<a href="#dyn-compatibility" class="anchor">§</a></h2><div class="dyn-compatibility-info"><p>This trait is <b>not</b> <a href="https://doc.rust-lang.org/1.91.1/reference/items/traits.html#dyn-compatibility">dyn compatible</a>.</p><p><i>In older versions of Rust, dyn compatibility was called "object safety", so this trait is not object safe.</i></p></div><h2 id="implementors" class="section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-MonitoredItemService-for-Session" class="impl"><a class="src rightside" href="../../../src/opcua/client/session/session.rs.html#1828-2112">Source</a><a href="#impl-MonitoredItemService-for-Session" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.MonitoredItemService.html" title="trait opcua::client::prelude::MonitoredItemService">MonitoredItemService</a> for <a class="struct" href="struct.Session.html" title="struct opcua::client::prelude::Session">Session</a></h3></section></div><script src="../../../trait.impl/opcua/client/session/services/trait.MonitoredItemService.js" async></script></section></div></main></body></html>

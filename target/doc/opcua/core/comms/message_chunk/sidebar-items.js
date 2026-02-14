@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["MESSAGE_CHUNK_HEADER_SIZE"],"enum":["MessageChunkType","MessageIsFinalType"],"struct":["MessageChunk","MessageChunkHeader"]};

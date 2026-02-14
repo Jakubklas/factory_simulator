@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"trait":["AttributeGetter","AttributeSetter","Method","RegisterNodes","UnregisterNodes"]};

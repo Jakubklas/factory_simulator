@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="View Service set"><title>ViewService in opcua::client::prelude - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-e56847b5.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="opcua" data-themes="" data-resource-suffix="" data-rustdoc-version="1.91.1 (ed61e7d7e 2025-11-07)" data-channel="1.91.1" data-search-js="search-e256b49e.js" data-stringdex-js="stringdex-c3e638e9.js" data-settings-js="settings-c38705f0.js" ><script src="../../../static.files/storage-e2aeef58.js"></script><script defer src="sidebar-items.js"></script><script defer src="../../../static.files/main-6dc2a7f3.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-263c88ec.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-eab170b8.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">ViewService</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../opcua/index.html">opcua</a><span class="version">0.12.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">View<wbr>Service</a></h2><h3><a href="#required-methods">Required Methods</a></h3><ul class="block"><li><a href="#tymethod.browse" title="browse">browse</a></li><li><a href="#tymethod.browse_next" title="browse_next">browse_next</a></li><li><a href="#tymethod.register_nodes" title="register_nodes">register_nodes</a></li><li><a href="#tymethod.translate_browse_paths_to_node_ids" title="translate_browse_paths_to_node_ids">translate_browse_paths_to_node_ids</a></li><li><a href="#tymethod.unregister_nodes" title="unregister_nodes">unregister_nodes</a></li></ul><h3><a href="#dyn-compatibility">Dyn Compatibility</a></h3><h3><a href="#implementors">Implementors</a></h3></section><div id="rustdoc-modnav"><h2><a href="index.html">In opcua::<wbr>client::<wbr>prelude</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">opcua</a>::<wbr><a href="../index.html">client</a>::<wbr><a href="index.html">prelude</a></div><h1>Trait <span class="trait">View<wbr>Service</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/opcua/client/session/services.rs.html#319-434">Source</a> </span></div><pre class="rust item-decl"><code>pub trait ViewService: <a class="trait" href="trait.Service.html" title="trait opcua::client::prelude::Service">Service</a> {
+    // Required methods
+    fn <a href="#tymethod.browse" class="fn">browse</a>(
+        &amp;self,
+        nodes_to_browse: &amp;[<a class="struct" href="../../types/service_types/struct.BrowseDescription.html" title="struct opcua::types::service_types::BrowseDescription">BrowseDescription</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.BrowseResult.html" title="struct opcua::types::service_types::BrowseResult">BrowseResult</a>&gt;&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.browse_next" class="fn">browse_next</a>(
+        &amp;self,
+        release_continuation_points: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+        continuation_points: &amp;[<a class="struct" href="../../types/byte_string/struct.ByteString.html" title="struct opcua::types::byte_string::ByteString">ByteString</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.BrowseResult.html" title="struct opcua::types::service_types::BrowseResult">BrowseResult</a>&gt;&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.translate_browse_paths_to_node_ids" class="fn">translate_browse_paths_to_node_ids</a>(
+        &amp;self,
+        browse_paths: &amp;[<a class="struct" href="../../types/service_types/struct.BrowsePath.html" title="struct opcua::types::service_types::BrowsePath">BrowsePath</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.BrowsePathResult.html" title="struct opcua::types::service_types::BrowsePathResult">BrowsePathResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.register_nodes" class="fn">register_nodes</a>(
+        &amp;self,
+        nodes_to_register: &amp;[<a class="struct" href="../../types/node_id/struct.NodeId.html" title="struct opcua::types::node_id::NodeId">NodeId</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/node_id/struct.NodeId.html" title="struct opcua::types::node_id::NodeId">NodeId</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+<span class="item-spacer"></span>    fn <a href="#tymethod.unregister_nodes" class="fn">unregister_nodes</a>(
+        &amp;self,
+        nodes_to_unregister: &amp;[<a class="struct" href="../../types/node_id/struct.NodeId.html" title="struct opcua::types::node_id::NodeId">NodeId</a>],
+    ) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.unit.html">()</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;;
+}</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>View Service set</p>
+</div></details><h2 id="required-methods" class="section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.browse" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#338-341">Source</a><h4 class="code-header">fn <a href="#tymethod.browse" class="fn">browse</a>(
+    &amp;self,
+    nodes_to_browse: &amp;[<a class="struct" href="../../types/service_types/struct.BrowseDescription.html" title="struct opcua::types::service_types::BrowseDescription">BrowseDescription</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.BrowseResult.html" title="struct opcua::types::service_types::BrowseResult">BrowseResult</a>&gt;&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Discover the references to the specified nodes by sending a <a href="./struct.BrowseRequest.html"><code>BrowseRequest</code></a> to the server.</p>
+<p>See OPC UA Part 4 - Services 5.8.2 for complete description of the service and error responses.</p>
+<h5 id="arguments"><a class="doc-anchor" href="#arguments">§</a>Arguments</h5>
+<ul>
+<li><code>nodes_to_browse</code> - A list of <a href="./struct.BrowseDescription.html"><code>BrowseDescription</code></a> describing nodes to browse.</li>
+</ul>
+<h5 id="returns"><a class="doc-anchor" href="#returns">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Option&lt;Vec&lt;BrowseResult&gt;)</code> - A list <a href="./struct.BrowseResult.html"><code>BrowseResult</code></a> corresponding to each node to browse. A browse result
+may contain a continuation point, for use with <code>browse_next()</code>.</li>
+<li><code>Err(StatusCode)</code> - Request failed, status code is the reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.browse_next" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#363-367">Source</a><h4 class="code-header">fn <a href="#tymethod.browse_next" class="fn">browse_next</a>(
+    &amp;self,
+    release_continuation_points: <a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.bool.html">bool</a>,
+    continuation_points: &amp;[<a class="struct" href="../../types/byte_string/struct.ByteString.html" title="struct opcua::types::byte_string::ByteString">ByteString</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/1.91.1/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.BrowseResult.html" title="struct opcua::types::service_types::BrowseResult">BrowseResult</a>&gt;&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Continue to discover references to nodes by sending continuation points in a <a href="./struct.BrowseNextRequest.html"><code>BrowseNextRequest</code></a>
+to the server. This function may have to be called repeatedly to process the initial query.</p>
+<p>See OPC UA Part 4 - Services 5.8.3 for complete description of the service and error responses.</p>
+<h5 id="arguments-1"><a class="doc-anchor" href="#arguments-1">§</a>Arguments</h5>
+<ul>
+<li><code>release_continuation_points</code> - Flag indicating if the continuation points should be released by the server</li>
+<li><code>continuation_points</code> - A list of <a href="../../types/service_types/struct.BrowseDescription.html" title="struct opcua::types::service_types::BrowseDescription"><code>BrowseDescription</code></a> continuation points</li>
+</ul>
+<h5 id="returns-1"><a class="doc-anchor" href="#returns-1">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Option&lt;Vec&lt;BrowseResult&gt;)</code> - A list <a href="./struct.BrowseResult.html"><code>BrowseResult</code></a> corresponding to each node to browse. A browse result
+may contain a continuation point, for use with <code>browse_next()</code>.</li>
+<li><code>Err(StatusCode)</code> - Request failed, status code is the reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.translate_browse_paths_to_node_ids" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#390-393">Source</a><h4 class="code-header">fn <a href="#tymethod.translate_browse_paths_to_node_ids" class="fn">translate_browse_paths_to_node_ids</a>(
+    &amp;self,
+    browse_paths: &amp;[<a class="struct" href="../../types/service_types/struct.BrowsePath.html" title="struct opcua::types::service_types::BrowsePath">BrowsePath</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/service_types/struct.BrowsePathResult.html" title="struct opcua::types::service_types::BrowsePathResult">BrowsePathResult</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Translate browse paths to NodeIds by sending a <a href="./struct.TranslateBrowsePathsToNodeIdsRequest.html"><code>TranslateBrowsePathsToNodeIdsRequest</code></a> request to the Server
+Each <a href="./struct.BrowsePath.html"><code>BrowsePath</code></a> is constructed of a starting node and a <code>RelativePath</code>. The specified starting node
+identifies the node from which the RelativePath is based. The RelativePath contains a sequence of
+ReferenceTypes and BrowseNames.</p>
+<p>See OPC UA Part 4 - Services 5.8.4 for complete description of the service and error responses.</p>
+<h5 id="arguments-2"><a class="doc-anchor" href="#arguments-2">§</a>Arguments</h5>
+<ul>
+<li><code>browse_paths</code> - A list of <a href="./struct.BrowsePath.html"><code>BrowsePath</code></a> node + relative path for the server to look up</li>
+</ul>
+<h5 id="returns-2"><a class="doc-anchor" href="#returns-2">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;BrowsePathResult&gt;&gt;)</code> - List of <a href="./struct.BrowsePathResult.html"><code>BrowsePathResult</code></a> for the list of browse
+paths. The size and order of the list matches the size and order of the <code>browse_paths</code>
+parameter.</li>
+<li><code>Err(StatusCode)</code> - Request failed, status code is the reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.register_nodes" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#413">Source</a><h4 class="code-header">fn <a href="#tymethod.register_nodes" class="fn">register_nodes</a>(
+    &amp;self,
+    nodes_to_register: &amp;[<a class="struct" href="../../types/node_id/struct.NodeId.html" title="struct opcua::types::node_id::NodeId">NodeId</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.91.1/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../types/node_id/struct.NodeId.html" title="struct opcua::types::node_id::NodeId">NodeId</a>&gt;, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Register nodes on the server by sending a <a href="./struct.RegisterNodesRequest.html"><code>RegisterNodesRequest</code></a>. The purpose of this
+call is server-dependent but allows a client to ask a server to create nodes which are
+otherwise expensive to set up or maintain, e.g. nodes attached to hardware.</p>
+<p>See OPC UA Part 4 - Services 5.8.5 for complete description of the service and error responses.</p>
+<h5 id="arguments-3"><a class="doc-anchor" href="#arguments-3">§</a>Arguments</h5>
+<ul>
+<li><code>nodes_to_register</code> - A list of <a href="./struct.NodeId.html"><code>NodeId</code></a> nodes for the server to register</li>
+</ul>
+<h5 id="returns-3"><a class="doc-anchor" href="#returns-3">§</a>Returns</h5>
+<ul>
+<li><code>Ok(Vec&lt;NodeId&gt;)</code> - A list of <a href="./struct.NodeId.html"><code>NodeId</code></a> corresponding to size and order of the input. The
+server may return an alias for the input <code>NodeId</code></li>
+<li><code>Err(StatusCode)</code> - Request failed, status code is the reason for failure</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.unregister_nodes" class="method"><a class="src rightside" href="../../../src/opcua/client/session/services.rs.html#433">Source</a><h4 class="code-header">fn <a href="#tymethod.unregister_nodes" class="fn">unregister_nodes</a>(
+    &amp;self,
+    nodes_to_unregister: &amp;[<a class="struct" href="../../types/node_id/struct.NodeId.html" title="struct opcua::types::node_id::NodeId">NodeId</a>],
+) -&gt; <a class="enum" href="https://doc.rust-lang.org/1.91.1/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/1.91.1/std/primitive.unit.html">()</a>, <a class="struct" href="../../types/status_code/struct.StatusCode.html" title="struct opcua::types::status_code::StatusCode">StatusCode</a>&gt;</h4></section></summary><div class="docblock"><p>Unregister nodes on the server by sending a <a href="./struct.UnregisterNodesRequest.html"><code>UnregisterNodesRequest</code></a>. This indicates to
+the server that the client relinquishes any need for these nodes. The server will ignore
+unregistered nodes.</p>
+<p>See OPC UA Part 4 - Services 5.8.5 for complete description of the service and error responses.</p>
+<h5 id="arguments-4"><a class="doc-anchor" href="#arguments-4">§</a>Arguments</h5>
+<ul>
+<li><code>nodes_to_unregister</code> - A list of <a href="./struct.NodeId.html"><code>NodeId</code></a> nodes for the server to unregister</li>
+</ul>
+<h5 id="returns-4"><a class="doc-anchor" href="#returns-4">§</a>Returns</h5>
+<ul>
+<li><code>Ok(())</code> - Request succeeded, server ignores invalid nodes</li>
+<li><code>Err(StatusCode)</code> - Request failed, status code is the reason for failure</li>
+</ul>
+</div></details></div><h2 id="dyn-compatibility" class="section-header">Dyn Compatibility<a href="#dyn-compatibility" class="anchor">§</a></h2><div class="dyn-compatibility-info"><p>This trait is <b>not</b> <a href="https://doc.rust-lang.org/1.91.1/reference/items/traits.html#dyn-compatibility">dyn compatible</a>.</p><p><i>In older versions of Rust, dyn compatibility was called "object safety", so this trait is not object safe.</i></p></div><h2 id="implementors" class="section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-ViewService-for-Session" class="impl"><a class="src rightside" href="../../../src/opcua/client/session/session.rs.html#2114-2248">Source</a><a href="#impl-ViewService-for-Session" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.ViewService.html" title="trait opcua::client::prelude::ViewService">ViewService</a> for <a class="struct" href="struct.Session.html" title="struct opcua::client::prelude::Session">Session</a></h3></section></div><script src="../../../trait.impl/opcua/client/session/services/trait.ViewService.js" async></script></section></div></main></body></html>
